@@ -19,11 +19,11 @@ jobs:
         env:
           OLLAMA_HOST: 0.0.0.0
         options: >-
-          --health-cmd "curl -f http://localhost:11434/api/tags || exit 1"
-          --health-interval 30s
-          --health-timeout 10s
-          --health-retries 5
-          --health-start-period 60s
+          --health-cmd "curl -f http://localhost:11434/api/version || exit 1"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+          --health-start-period 30s
     
     steps:
     - uses: actions/checkout@v4
@@ -64,19 +64,32 @@ jobs:
     - name: Wait for Ollama service
       run: |
         echo "Waiting for Ollama to be ready..."
-        timeout 300 bash -c 'until curl -f http://localhost:11434/api/tags; do sleep 5; echo "Still waiting..."; done'
+        timeout 120 bash -c 'until curl -f http://localhost:11434/api/version; do sleep 2; echo "Still waiting..."; done'
         echo "Ollama is ready!"
     
     - name: Setup TinyLlama model
       run: |
         echo "Pulling TinyLlama model..."
-        curl -X POST http://localhost:11434/api/pull -d '{"name": "tinyllama"}' -H "Content-Type: application/json"
+        # Pull model in background and wait for completion
+        curl -X POST http://localhost:11434/api/pull \
+          -d '{"name": "tinyllama"}' \
+          -H "Content-Type: application/json" &
         
+        # Wait for model to be available (up to 5 minutes)
         echo "Waiting for model to be available..."
-        timeout 300 bash -c 'until curl -s http://localhost:11434/api/tags | grep -q tinyllama; do sleep 10; echo "Model still downloading..."; done'
+        timeout 300 bash -c '
+          while true; do
+            if curl -s http://localhost:11434/api/tags | grep -q "tinyllama"; then
+              echo "✅ TinyLlama model is ready!"
+              break
+            fi
+            echo "Model still downloading..."
+            sleep 15
+          done
+        '
         
-        echo "TinyLlama is ready!"
-        curl -s http://localhost:11434/api/tags | jq '.' || curl -s http://localhost:11434/api/tags
+        echo "Available models:"
+        curl -s http://localhost:11434/api/tags
     
     - name: Test LLM connection
       env:
