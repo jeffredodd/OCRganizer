@@ -39,16 +39,31 @@ python app.py
 ```mermaid
 graph TD
     A[PDF Input] --> B[Text Extraction]
-    B --> C[AI Analysis]
-    C --> D[File Organization]
-    D --> E[Organized Files]
+    B --> C{Text Extracted?}
+    C -->|Yes| D[AI Analysis]
+    C -->|No/Poor Quality| E[OCR with Tesseract]
+    E --> D
+    D --> F[File Organization]
+    F --> G[Organized Files]
     
-    B --> F[pypdf]
-    B --> G[OCR/Tesseract]
+    subgraph "Text Extraction Methods"
+        H[pypdf - Digital PDFs]
+        I[pdfplumber - Complex Layouts]
+        J[OCR/Tesseract - Scanned PDFs]
+    end
     
-    C --> H[OpenAI GPT]
-    C --> I[Anthropic Claude]
-    C --> J[Local LM Studio]
+    subgraph "AI Provider (Choose One)"
+        K[OpenAI GPT]
+        L[Anthropic Claude]
+        M[Local LM Studio]
+    end
+    
+    B -.-> H
+    B -.-> I
+    B -.-> J
+    D -.-> K
+    D -.-> L
+    D -.-> M
 ```
 
 ## Documentation
