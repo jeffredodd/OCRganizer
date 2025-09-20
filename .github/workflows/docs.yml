@@ -1,8 +1,9 @@
-name: Deploy Documentation
+name: Deploy Documentation to Wiki
 
 on:
   push:
     branches: [ main ]
+    paths: [ 'docs/**' ]
   workflow_dispatch:
 
 permissions:
@@ -14,26 +15,31 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
     
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-    
-    - name: Install dependencies
+    - name: Deploy to GitHub Wiki
       run: |
-        python -m pip install --upgrade pip
-        pip install mkdocs mkdocs-material mkdocs-mermaid2-plugin
-    
-    - name: Build and Deploy Documentation
-      run: |
-        mkdocs build
-    
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./site
-        force_orphan: true
+        # Clone the wiki repository
+        git clone https://github.com/jeffredodd/OCRganizer.wiki.git wiki
+        cd wiki
+        
+        # Clear existing markdown files
+        rm -f *.md
+        
+        # Copy markdown files from docs directory
+        cp ../docs/*.md .
+        
+        # Create Home.md from index.md if it exists
+        if [ -f ../docs/index.md ]; then
+          cp ../docs/index.md Home.md
+        fi
+        
+        # Configure git
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        
+        # Add and commit changes
+        git add .
+        git commit -m "Update wiki documentation from main branch" || exit 0
+        
+        # Push to wiki
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/jeffredodd/OCRganizer.wiki.git
