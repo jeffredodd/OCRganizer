@@ -1,0 +1,110 @@
+{
+  "summary": {
+    "total_processed": 10,
+    "successful": 0,
+    "failed": 0,
+    "dry_run": true
+  },
+  "results": [
+    {
+      "original_path": "input_pdfs/20190501_KENT.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/City_of_Kent_Utility_Billing/2019/06/17/City_of_Kent_Utility_Billing_utility_bill_2019-06-17.pdf",
+      "company": "City of Kent Utility Billing",
+      "type": "utility bill",
+      "date": "2019-06-17",
+      "confidence": 0.98,
+      "suggested_name": "Kent Utility Bill May 2019",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/2015_04_11_12_38_49.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/2015/03/15/Unknown_document_2015-03-15.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": "2015-03-15",
+      "confidence": 0.0,
+      "suggested_name": "March 2015",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/2016_07_03_20_23_48.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/Unknown_Year/Unknown_Month/Unknown_Day/Unknown_document_Unknown_Date.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": null,
+      "confidence": 0.0,
+      "suggested_name": "Unnamed Document",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/20200731_KENT.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/City_of_Kent_-_Utility_Billing/2020/08/17/City_of_Kent_-_Utility_Billing_utility_bill_2020-08-17.pdf",
+      "company": "City of Kent - Utility Billing",
+      "type": "utility bill",
+      "date": "2020-08-17",
+      "confidence": 0.95,
+      "suggested_name": "City of Kent Utility Bill August 2020",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/20170219_IMPORTANT NOTICE FOR BANKRUPT CUSTOMERS.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/Unknown_Year/Unknown_Month/Unknown_Day/Unknown_document_Unknown_Date.pdf",
+      "company": "",
+      "type": "",
+      "date": null,
+      "confidence": 0.0,
+      "suggested_name": "Unnamed Document",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/2015_05_25_19_25_48.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/Unknown_Year/Unknown_Month/Unknown_Day/Unknown_document_Unknown_Date.pdf",
+      "company": null,
+      "type": null,
+      "date": null,
+      "confidence": 0.0,
+      "suggested_name": "Unnamed Document",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/2015_04_12_20_24_21.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/U.S._Department_of_Education/Unknown_Year/Unknown_Month/Unknown_Day/U.S._Department_of_Education_letter_Unknown_Date.pdf",
+      "company": "U.S. Department of Education",
+      "type": "letter",
+      "date": null,
+      "confidence": 0.4,
+      "suggested_name": "U.S. Department of Education Letter",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/2016_05_19_12_04_08.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/Unknown_Year/Unknown_Month/Unknown_Day/Unknown_document_Unknown_Date.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": null,
+      "confidence": 0.0,
+      "suggested_name": "Unnamed Document",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/2016_05_19_11_30_10.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Concur/2016/04/25/Concur_Employee_Confidential_Information_and_Inventions_Agreement_2016-04-25.pdf",
+      "company": "Concur",
+      "type": "Employee Confidential Information and Inventions Agreement",
+      "date": "2016-04-25",
+      "confidence": 0.95,
+      "suggested_name": "Concur Employee Confidential Information and Inventions Agreement - April 25 2016",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/20200518_FNTG lenders Direct division of Commonwealth Land Title.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/FNTG_lenders_Direct_division_of_Commonwealth_Land_Title_Company/2020/05/22/FNTG_lenders_Direct_division_of_Commonwealth_Land_Title_Company_refinance_statement_2020-05-22.pdf",
+      "company": "FNTG lenders Direct division of Commonwealth Land Title Company",
+      "type": "refinance statement",
+      "date": "2020-05-22",
+      "confidence": 0.92,
+      "suggested_name": "FNTG_Lenders_Refinance_Statement_2020-05-22",
+      "status": "preview"
+    }
+  ]
+}

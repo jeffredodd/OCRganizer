@@ -1,0 +1,81 @@
+# OCRganizer Configuration
+
+# Organization Settings
+organization:
+  # Folder structure pattern
+  # Available placeholders: {company}, {year}, {month}, {day}, {month_name}, {type}
+  structure_pattern: "{company}/{year}/{month}"
+  
+  # Filename pattern
+  # Available placeholders: {company}, {type}, {date}
+  filename_pattern: "{company}_{type}_{date}"
+  
+  # Date format for filenames
+  date_format: "%Y-%m-%d"
+  
+  # Company name normalization to prevent duplicate folders
+  enable_company_normalization: true
+  
+  # Similarity threshold for fuzzy company name matching (0.0 to 1.0)
+  # Higher values require more similarity to match companies
+  company_similarity_threshold: 0.75
+
+# AI Settings
+ai:
+  # Preferred provider (openai or anthropic)
+  preferred_provider: "openai"
+  
+  # OpenAI specific settings
+  openai:
+    model: "gpt-3.5-turbo"
+    temperature: 0.3
+    max_tokens: 500
+  
+  # Anthropic specific settings
+  anthropic:
+    model: "claude-3-haiku-20240307"
+    temperature: 0.3
+    max_tokens: 500
+
+# Processing Settings
+processing:
+  # Use OCR for scanned documents
+  enable_ocr: true
+  
+  # Minimum text length to consider document as readable (vs needing OCR)
+  min_text_length: 50
+  
+  # Maximum text length to send to AI (characters)
+  max_text_for_ai: 4000
+  
+  # Confidence threshold for auto-processing (0.0 to 1.0)
+  confidence_threshold: 0.7
+
+# File Settings
+files:
+  # Maximum file size in MB
+  max_file_size_mb: 50
+  
+  # Allowed file extensions
+  allowed_extensions:
+    - ".pdf"
+  
+  # Input directory for PDFs
+  input_dir: "input_pdfs"
+  
+  # Output directory for organized PDFs
+  output_dir: "output"
+  
+  # Copy files instead of moving them
+  copy_mode: false
+
+# Web Interface Settings
+web:
+  # Server port
+  port: 5000
+  
+  # Debug mode
+  debug: true
+  
+  # Host
+  host: "0.0.0.0"

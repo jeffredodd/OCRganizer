@@ -1,0 +1,126 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-with-tinyllama:
+    runs-on: ubuntu-latest
+    
+    services:
+      # TinyLlama service for real LLM testing
+      tinyllama:
+        image: ollama/ollama:latest
+        ports:
+          - 11434:11434
+        env:
+          OLLAMA_HOST: 0.0.0.0
+        options: >-
+          --health-cmd "curl -f http://localhost:11434/api/tags || exit 1"
+          --health-interval 30s
+          --health-timeout 10s
+          --health-retries 5
+          --health-start-period 60s
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-eng
+    
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Run linting
+      run: |
+        flake8 src/ tests/
+        black --check src/ tests/ *.py
+        isort --check-only src/ tests/ *.py
+    
+    - name: Run type checking
+      run: |
+        mypy src/ --ignore-missing-imports
+    
+    - name: Wait for Ollama service
+      run: |
+        echo "Waiting for Ollama to be ready..."
+        timeout 300 bash -c 'until curl -f http://localhost:11434/api/tags; do sleep 5; echo "Still waiting..."; done'
+        echo "Ollama is ready!"
+    
+    - name: Setup TinyLlama model
+      run: |
+        echo "Pulling TinyLlama model..."
+        curl -X POST http://localhost:11434/api/pull -d '{"name": "tinyllama"}' -H "Content-Type: application/json"
+        
+        echo "Waiting for model to be available..."
+        timeout 300 bash -c 'until curl -s http://localhost:11434/api/tags | grep -q tinyllama; do sleep 10; echo "Model still downloading..."; done'
+        
+        echo "TinyLlama is ready!"
+        curl -s http://localhost:11434/api/tags | jq '.' || curl -s http://localhost:11434/api/tags
+    
+    - name: Test LLM connection
+      env:
+        OPENAI_BASE_URL: http://localhost:11434/v1
+        OPENAI_API_KEY: ollama
+        OPENAI_MODEL: tinyllama
+      run: |
+        python -c "
+        import requests
+        import json
+        
+        # Test Ollama API
+        try:
+            response = requests.post('http://localhost:11434/api/generate', 
+                                   json={'model': 'tinyllama', 'prompt': 'Hello', 'stream': False},
+                                   timeout=30)
+            print(f'Ollama test: {response.status_code}')
+            if response.status_code == 200:
+                print('✅ TinyLlama is working!')
+            else:
+                print(f'❌ Error: {response.text}')
+        except Exception as e:
+            print(f'❌ Connection failed: {e}')
+        "
+    
+    - name: Run all tests with real TinyLlama
+      env:
+        OPENAI_BASE_URL: http://localhost:11434/v1
+        OPENAI_API_KEY: ollama
+        OPENAI_MODEL: tinyllama
+        LOCAL_MODEL_NAME: tinyllama
+        CI: true
+      run: |
+        pytest tests/ -v \
+          --cov=src \
+          --cov-report=xml \
+          --cov-report=term-missing \
+          --timeout=300 \
+          -x
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-tinyllama
+        fail_ci_if_error: false

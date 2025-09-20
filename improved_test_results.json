@@ -1,0 +1,110 @@
+{
+  "summary": {
+    "total_processed": 10,
+    "successful": 0,
+    "failed": 0,
+    "dry_run": true
+  },
+  "results": [
+    {
+      "original_path": "input_pdfs/20190501_KENT.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/City_of_Kent_Utility_Billing/2019/06/17/City_of_Kent_Utility_Billing_utility_bill_2019-06-17.pdf",
+      "company": "City of Kent Utility Billing",
+      "type": "utility bill",
+      "date": "2019-06-17",
+      "confidence": 0.98,
+      "suggested_name": "City_of_Kent_Utility_Bill_June_2019",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/2015_04_11_12_38_49.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/2015/03/15/Unknown_document_2015-03-15.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": "2015-03-15",
+      "confidence": 0.0,
+      "suggested_name": "March 2015",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/2016_07_03_20_23_48.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/2016/07/03/Unknown_document_2016-07-03.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": "2016-07-03",
+      "confidence": 0.0,
+      "suggested_name": "July 2016",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/20200731_KENT.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/2020/07/01/Unknown_document_2020-07-01.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": "2020-07-01",
+      "confidence": 0.0,
+      "suggested_name": "July 2020",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/20170219_IMPORTANT NOTICE FOR BANKRUPT CUSTOMERS.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/2017/02/19/Unknown_document_2017-02-19.pdf",
+      "company": "",
+      "type": "",
+      "date": "2017-02-19",
+      "confidence": 0.0,
+      "suggested_name": "February 2017",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/2015_05_25_19_25_48.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/2015/05/25/Unknown_document_2015-05-25.pdf",
+      "company": null,
+      "type": null,
+      "date": "2015-05-25",
+      "confidence": 0.0,
+      "suggested_name": "May 2015",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/2015_04_12_20_24_21.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/2015/04/12/Unknown_document_2015-04-12.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": "2015-04-12",
+      "confidence": 0.0,
+      "suggested_name": "April 2015",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/2016_05_19_12_04_08.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Premera_Blue_Cross/2016/02/25/Premera_Blue_Cross_Explanation_of_Benefits_(EOB)_2016-02-25.pdf",
+      "company": "Premera Blue Cross",
+      "type": "Explanation of Benefits (EOB)",
+      "date": "2016-02-25",
+      "confidence": 0.98,
+      "suggested_name": "Premera_EOB_Jeffrey_D_Johnson_2016-02-25",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/2016_05_19_11_30_10.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/2016/05/23/Unknown_document_2016-05-23.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": "2016-05-23",
+      "confidence": 0.0,
+      "suggested_name": "May 2016",
+      "status": "preview"
+    },
+    {
+      "original_path": "input_pdfs/20200518_FNTG lenders Direct division of Commonwealth Land Title.pdf",
+      "preview_path": "/Volumes/Games/TempDocSpot/Unknown/2017/07/05/Unknown_document_2017-07-05.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": "2017-07-05",
+      "confidence": 0.0,
+      "suggested_name": "July 2017",
+      "status": "preview"
+    }
+  ]
+}

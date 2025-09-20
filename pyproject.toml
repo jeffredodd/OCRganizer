@@ -1,0 +1,187 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "OCRganizer"
+version = "1.0.0"
+description = "AI-powered PDF document organization and categorization system"
+long_description = "file: README.md"
+long_description_content_type = "text/markdown"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+maintainers = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+keywords = ["pdf", "ai", "document-management", "categorization", "ocr", "automation"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Office Suites",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: System :: Archiving",
+]
+dependencies = [
+    "pypdf>=4.2.0",
+    "pdfplumber>=0.11.0",
+    "PyMuPDF>=1.24.2",
+    "pytesseract>=0.3.10",
+    "pdf2image>=1.17.0",
+    "Pillow>=10.0.0",
+    "openai>=1.14.0",
+    "anthropic>=0.25.0",
+    "python-dotenv>=1.0.1",
+    "flask>=3.0.2",
+    "flask-cors>=4.0.0",
+    "Werkzeug>=3.0.0",
+    "python-dateutil>=2.9.0",
+    "PyYAML>=6.0.1",
+    "requests>=2.31.0",
+    "click>=8.1.7",
+    "tqdm>=4.66.2",
+    "colorama>=0.4.6",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.1.1",
+    "pytest-cov>=5.0.0",
+    "pytest-mock>=3.12.0",
+    "black>=24.3.0",
+    "flake8>=7.0.0",
+    "mypy>=1.9.0",
+    "isort>=5.13.0",
+    "types-requests>=2.31.0",
+    "types-PyYAML>=6.0.0",
+]
+local-ai = [
+    "torch>=2.0.0",
+    "transformers>=4.30.0",
+]
+
+[project.scripts]
+pdf-categorizer = "cli:main"
+pdf-categorizer-web = "app:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/OCRganizer"
+Repository = "https://github.com/yourusername/OCRganizer"
+Issues = "https://github.com/yourusername/OCRganizer/issues"
+Documentation = "https://github.com/yourusername/OCRganizer/wiki"
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml", "*.yml", "*.json", "*.txt"]
+templates = ["*.html"]
+static = ["*.css", "*.js"]
+
+# Black configuration
+[tool.black]
+line-length = 88
+target-version = ['py39']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+# isort configuration
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["src"]
+
+# MyPy configuration
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[[tool.mypy.overrides]]
+module = [
+    "pypdf.*",
+    "pdfplumber.*",
+    "pytesseract.*",
+    "pdf2image.*",
+    "fitz.*",
+]
+ignore_missing_imports = true
+
+# Pytest configuration
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--verbose",
+    "--cov=src",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-fail-under=34",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+# Coverage configuration
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/test_*.py",
+    "*/__init__.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]

@@ -1,0 +1,110 @@
+{
+  "summary": {
+    "total_processed": 10,
+    "successful": 10,
+    "failed": 0,
+    "dry_run": false
+  },
+  "results": [
+    {
+      "original_path": "input_pdfs/20190501_KENT.pdf",
+      "new_path": "/Volumes/Games/TempDocSpot/Unknown/2019/05/31/Unknown_document_2019-05-31.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": "2019-05-31",
+      "confidence": 0.0,
+      "suggested_name": "May 2019",
+      "status": "success"
+    },
+    {
+      "original_path": "input_pdfs/2015_04_11_12_38_49.pdf",
+      "new_path": "/Volumes/Games/TempDocSpot/Unknown/2015/03/15/Unknown_document_2015-03-15.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": "2015-03-15",
+      "confidence": 0.0,
+      "suggested_name": "March 2015",
+      "status": "success"
+    },
+    {
+      "original_path": "input_pdfs/2016_07_03_20_23_48.pdf",
+      "new_path": "/Volumes/Games/TempDocSpot/Unknown/2016/07/03/Unknown_document_2016-07-03.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": "2016-07-03",
+      "confidence": 0.0,
+      "suggested_name": "July 2016",
+      "status": "success"
+    },
+    {
+      "original_path": "input_pdfs/20200731_KENT.pdf",
+      "new_path": "/Volumes/Games/TempDocSpot/Unknown/2020/07/01/Unknown_document_2020-07-01.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": "2020-07-01",
+      "confidence": 0.0,
+      "suggested_name": "July 2020",
+      "status": "success"
+    },
+    {
+      "original_path": "input_pdfs/20170219_IMPORTANT NOTICE FOR BANKRUPT CUSTOMERS.pdf",
+      "new_path": "/Volumes/Games/TempDocSpot/Unknown/2017/02/19/Unknown_unknown_2017-02-19.pdf",
+      "company": "",
+      "type": "unknown",
+      "date": "2017-02-19",
+      "confidence": 0.0,
+      "suggested_name": "Unknown Document",
+      "status": "success"
+    },
+    {
+      "original_path": "input_pdfs/2015_05_25_19_25_48.pdf",
+      "new_path": "/Volumes/Games/TempDocSpot/Unknown/2015/05/25/Unknown_document_2015-05-25.pdf",
+      "company": null,
+      "type": null,
+      "date": "2015-05-25",
+      "confidence": 0.0,
+      "suggested_name": "May 2015",
+      "status": "success"
+    },
+    {
+      "original_path": "input_pdfs/2015_04_12_20_24_21.pdf",
+      "new_path": "/Volumes/Games/TempDocSpot/U.S._Department_of_Education/2015/04/12/U.S._Department_of_Education_letter_2015-04-12.pdf",
+      "company": "U.S. Department of Education",
+      "type": "letter",
+      "date": "2015-04-12",
+      "confidence": 0.15,
+      "suggested_name": "U.S._Department_of_Education_Letter",
+      "status": "success"
+    },
+    {
+      "original_path": "input_pdfs/2016_05_19_12_04_08.pdf",
+      "new_path": "/Volumes/Games/TempDocSpot/Premera/2016/02/26/Premera_Explanation_of_Benefits_(EOB)_2016-02-26.pdf",
+      "company": "Premera",
+      "type": "Explanation of Benefits (EOB)",
+      "date": "2016-02-26",
+      "confidence": 0.95,
+      "suggested_name": "Premera EOB for Jeffery D Johnson - Claim 836418547000 - 2016-02-26",
+      "status": "success"
+    },
+    {
+      "original_path": "input_pdfs/2016_05_19_11_30_10.pdf",
+      "new_path": "/Volumes/Games/TempDocSpot/Concur/2016/04/25/Concur_contract___agreement_2016-04-25.pdf",
+      "company": "Concur",
+      "type": "contract / agreement",
+      "date": "2016-04-25",
+      "confidence": 0.98,
+      "suggested_name": "Concur Employee Confidential Information and Inventions Agreement - Jeffrey Johnson - 2016-04-25",
+      "status": "success"
+    },
+    {
+      "original_path": "input_pdfs/20200518_FNTG lenders Direct division of Commonwealth Land Title.pdf",
+      "new_path": "/Volumes/Games/TempDocSpot/Unknown/2017/07/05/Unknown_document_2017-07-05.pdf",
+      "company": "Unknown",
+      "type": "document",
+      "date": "2017-07-05",
+      "confidence": 0.0,
+      "suggested_name": "July 2017",
+      "status": "success"
+    }
+  ]
+}
