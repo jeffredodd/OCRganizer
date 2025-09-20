@@ -1,0 +1,1931 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AI-powered PDF document organization and categorization system">
+      
+      
+      
+        <link rel="canonical" href="https://jeffredodd.github.io/OCRganizer/ai-provider-setup/">
+      
+      
+        <link rel="prev" href="../cli-usage/">
+      
+      
+        <link rel="next" href="../configuration/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>AI Provider Setup - OCRganizer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai-provider-setup-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="OCRganizer" class="md-header__button md-logo" aria-label="OCRganizer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OCRganizer
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AI Provider Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jeffredodd/OCRganizer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeffredodd/OCRganizer
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../quick-start/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  AI Providers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../developer-guide/" class="md-tabs__link">
+          
+  
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../troubleshooting/" class="md-tabs__link">
+          
+  
+  
+  Support
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="OCRganizer" class="md-nav__button md-logo" aria-label="OCRganizer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    OCRganizer
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jeffredodd/OCRganizer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jeffredodd/OCRganizer
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli-usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI Providers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI Providers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    AI Provider Setup
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Provider Setup
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#openai-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAI Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenAI Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-openai-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Create OpenAI Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-get-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Get API Key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-billing-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Add Billing Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configure-in-ocrganizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configure in OCRganizer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-test-the-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Test the Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anthropic-claude-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anthropic Claude Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anthropic Claude Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-anthropic-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Create Anthropic Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-get-api-key_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Get API Key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-billing-information_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Add Billing Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configure-in-ocrganizer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configure in OCRganizer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-test-the-setup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Test the Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-information_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lm-studio-setup-localfree" class="md-nav__link">
+    <span class="md-ellipsis">
+      LM Studio Setup (Local/Free)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LM Studio Setup (Local/Free)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-download-lm-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Download LM Studio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-download-a-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Download a Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-load-and-start-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Load and Start Server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configure-in-ocrganizer_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configure in OCRganizer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-test-the-setup_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Test the Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-information_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provider-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider Comparison
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openai-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAI Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anthropic-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anthropic Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lm-studio-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      LM Studio Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-key-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Key Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-secure-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Secure Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cost-optimization-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Optimization Tips
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cost Optimization Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openai-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAI Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anthropic-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anthropic Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lm-studio-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      LM Studio Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuration Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lm-studio-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LM Studio Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Developer Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Support
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Support
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#openai-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAI Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenAI Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-openai-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Create OpenAI Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-get-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Get API Key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-billing-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Add Billing Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configure-in-ocrganizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configure in OCRganizer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-test-the-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Test the Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anthropic-claude-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anthropic Claude Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anthropic Claude Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-anthropic-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Create Anthropic Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-get-api-key_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Get API Key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-add-billing-information_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Add Billing Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configure-in-ocrganizer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configure in OCRganizer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-test-the-setup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Test the Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-information_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lm-studio-setup-localfree" class="md-nav__link">
+    <span class="md-ellipsis">
+      LM Studio Setup (Local/Free)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LM Studio Setup (Local/Free)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-download-lm-studio" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Download LM Studio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-download-a-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Download a Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-load-and-start-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Load and Start Server
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configure-in-ocrganizer_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configure in OCRganizer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-test-the-setup_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Test the Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-information_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provider-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Provider Comparison
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openai-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAI Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anthropic-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anthropic Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lm-studio-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      LM Studio Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api-key-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Key Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-secure-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Secure Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cost-optimization-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Optimization Tips
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cost Optimization Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openai-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      OpenAI Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anthropic-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anthropic Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lm-studio-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      LM Studio Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ai-provider-setup-guide">AI Provider Setup Guide</h1>
+<p>This guide provides detailed instructions for setting up each AI provider with the OCRganizer system.</p>
+<h2 id="openai-setup">OpenAI Setup</h2>
+<h3 id="1-create-openai-account">1. Create OpenAI Account</h3>
+<ol>
+<li><strong>Visit OpenAI</strong>: Go to <a href="https://platform.openai.com">https://platform.openai.com</a></li>
+<li><strong>Sign Up</strong>: Create an account or sign in</li>
+<li><strong>Verify Email</strong>: Check your email and verify your account</li>
+</ol>
+<h3 id="2-get-api-key">2. Get API Key</h3>
+<ol>
+<li><strong>Navigate to API Keys</strong>: Go to <a href="https://platform.openai.com/api-keys">https://platform.openai.com/api-keys</a></li>
+<li><strong>Create New Key</strong>: Click "Create new secret key"</li>
+<li><strong>Name Your Key</strong>: Give it a descriptive name (e.g., "PDF-Categorizer")</li>
+<li><strong>Copy the Key</strong>: <strong>Important</strong>: Copy the key immediately - you won't be able to see it again</li>
+<li><strong>Save Securely</strong>: Store the key in a password manager or secure location</li>
+</ol>
+<h3 id="3-add-billing-information">3. Add Billing Information</h3>
+<ol>
+<li><strong>Go to Billing</strong>: Navigate to <a href="https://platform.openai.com/account/billing">https://platform.openai.com/account/billing</a></li>
+<li><strong>Add Payment Method</strong>: Add a credit card or PayPal account</li>
+<li><strong>Set Usage Limits</strong>: Consider setting monthly spending limits for cost control</li>
+</ol>
+<h3 id="4-configure-in-ocrganizer">4. Configure in OCRganizer</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Edit your env file</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>nano<span class="w"> </span>env
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Add your OpenAI API key</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>sk-your-actual-api-key-here
+</code></pre></div>
+<h3 id="5-test-the-setup">5. Test the Setup</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Test OpenAI connection</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="s2">from src.ai_analyzer import AIAnalyzer</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="s2">analyzer = AIAnalyzer(provider=&#39;openai&#39;)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="s2">print(&#39;✅ OpenAI connection successful!&#39;)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="cost-information">Cost Information</h3>
+<ul>
+<li><strong>GPT-3.5-turbo</strong>: ~$0.002 per 1K tokens (very affordable)</li>
+<li><strong>GPT-4</strong>: ~$0.03 per 1K tokens (higher quality, more expensive)</li>
+<li><strong>Typical cost</strong>: $0.01-0.05 per PDF document</li>
+</ul>
+<h2 id="anthropic-claude-setup">Anthropic Claude Setup</h2>
+<h3 id="1-create-anthropic-account">1. Create Anthropic Account</h3>
+<ol>
+<li><strong>Visit Anthropic</strong>: Go to <a href="https://console.anthropic.com">https://console.anthropic.com</a></li>
+<li><strong>Sign Up</strong>: Create an account with your email</li>
+<li><strong>Verify Email</strong>: Check your email and verify your account</li>
+</ol>
+<h3 id="2-get-api-key_1">2. Get API Key</h3>
+<ol>
+<li><strong>Navigate to API Keys</strong>: Go to <a href="https://console.anthropic.com/keys">https://console.anthropic.com/keys</a></li>
+<li><strong>Create New Key</strong>: Click "Create Key"</li>
+<li><strong>Name Your Key</strong>: Give it a descriptive name (e.g., "PDF-Categorizer")</li>
+<li><strong>Copy the Key</strong>: <strong>Important</strong>: Copy the key immediately - you won't be able to see it again</li>
+<li><strong>Save Securely</strong>: Store the key in a password manager</li>
+</ol>
+<h3 id="3-add-billing-information_1">3. Add Billing Information</h3>
+<ol>
+<li><strong>Go to Billing</strong>: Navigate to <a href="https://console.anthropic.com/billing">https://console.anthropic.com/billing</a></li>
+<li><strong>Add Payment Method</strong>: Add a credit card</li>
+<li><strong>Set Usage Limits</strong>: Consider setting monthly spending limits</li>
+</ol>
+<h3 id="4-configure-in-ocrganizer_1">4. Configure in OCRganizer</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Edit your env file</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>nano<span class="w"> </span>env
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># Add your Anthropic API key</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">ANTHROPIC_API_KEY</span><span class="o">=</span>sk-ant-your-actual-api-key-here
+</code></pre></div>
+<h3 id="5-test-the-setup_1">5. Test the Setup</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Test Anthropic connection</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s2">from src.ai_analyzer import AIAnalyzer</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s2">analyzer = AIAnalyzer(provider=&#39;anthropic&#39;)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s2">print(&#39;✅ Anthropic connection successful!&#39;)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="cost-information_1">Cost Information</h3>
+<ul>
+<li><strong>Claude 3 Haiku</strong>: ~$0.25 per 1M tokens (very affordable)</li>
+<li><strong>Claude 3 Sonnet</strong>: ~$3 per 1M tokens (high quality)</li>
+<li><strong>Claude 3 Opus</strong>: ~$15 per 1M tokens (highest quality)</li>
+<li><strong>Typical cost</strong>: $0.01-0.10 per PDF document</li>
+</ul>
+<h2 id="lm-studio-setup-localfree">LM Studio Setup (Local/Free)</h2>
+<h3 id="1-download-lm-studio">1. Download LM Studio</h3>
+<ol>
+<li><strong>Visit LM Studio</strong>: Go to <a href="https://lmstudio.ai">https://lmstudio.ai</a></li>
+<li><strong>Download</strong>: Download the desktop application for your OS</li>
+<li><strong>Install</strong>: Follow the installation instructions</li>
+</ol>
+<h3 id="2-download-a-model">2. Download a Model</h3>
+<ol>
+<li><strong>Open LM Studio</strong>: Launch the application</li>
+<li><strong>Go to Models</strong>: Click on the "Models" tab</li>
+<li><strong>Search for Models</strong>: Look for these recommended models:</li>
+<li><strong>Llama 2 7B Chat</strong> (good balance)</li>
+<li><strong>Mistral 7B Instruct</strong> (excellent for instructions)</li>
+<li><strong>Code Llama 7B</strong> (good for structured output)</li>
+</ol>
+<h3 id="3-load-and-start-server">3. Load and Start Server</h3>
+<ol>
+<li><strong>Load Model</strong>: Click on a model to download and load it</li>
+<li><strong>Start Server</strong>: Go to "Local Server" tab</li>
+<li><strong>Click "Start Server"</strong>: The server will start on port 1234</li>
+<li><strong>Note Model Name</strong>: Copy the exact model name shown</li>
+</ol>
+<h3 id="4-configure-in-ocrganizer_2">4. Configure in OCRganizer</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Edit your env file</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>nano<span class="w"> </span>env
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Configure LM Studio</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">OPENAI_BASE_URL</span><span class="o">=</span>http://localhost:1234/v1
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>lm-studio
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nv">LOCAL_MODEL_NAME</span><span class="o">=</span>your-actual-model-name-here
+</code></pre></div>
+<h3 id="5-test-the-setup_2">5. Test the Setup</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Test LM Studio connection</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s2">from src.ai_analyzer import AIAnalyzer</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s2">analyzer = AIAnalyzer(provider=&#39;lm_studio&#39;)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="s2">print(&#39;✅ LM Studio connection successful!&#39;)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="cost-information_2">Cost Information</h3>
+<ul>
+<li><strong>Free</strong>: No API costs</li>
+<li><strong>Hardware</strong>: Requires sufficient RAM (8GB+ recommended)</li>
+<li><strong>Performance</strong>: Slower than cloud APIs but completely private</li>
+</ul>
+<h2 id="provider-comparison">Provider Comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Cost</th>
+<th>Speed</th>
+<th>Privacy</th>
+<th>Quality</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OpenAI</strong></td>
+<td>$</td>
+<td>Fast</td>
+<td>Cloud</td>
+<td>High</td>
+<td>Production use</td>
+</tr>
+<tr>
+<td><strong>Anthropic</strong></td>
+<td>$$</td>
+<td>Fast</td>
+<td>Cloud</td>
+<td>Very High</td>
+<td>High-quality analysis</td>
+</tr>
+<tr>
+<td><strong>LM Studio</strong></td>
+<td>Free</td>
+<td>Slow</td>
+<td>Local</td>
+<td>Good</td>
+<td>Privacy-sensitive docs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="openai-issues">OpenAI Issues</h3>
+<p><strong>Error: "Invalid API key"</strong>
+- Check the key format (should start with <code>sk-</code>)
+- Ensure the key is active in your OpenAI account
+- Verify billing information is added</p>
+<p><strong>Error: "Insufficient quota"</strong>
+- Check your usage limits in OpenAI dashboard
+- Add more credits to your account
+- Consider upgrading your plan</p>
+<h3 id="anthropic-issues">Anthropic Issues</h3>
+<p><strong>Error: "Invalid API key"</strong>
+- Check the key format (should start with <code>sk-ant-</code>)
+- Ensure the key is active in your Anthropic account
+- Verify billing information is added</p>
+<p><strong>Error: "Rate limit exceeded"</strong>
+- Anthropic has rate limits for new accounts
+- Wait a few minutes and try again
+- Consider upgrading your plan</p>
+<h3 id="lm-studio-issues">LM Studio Issues</h3>
+<p><strong>Error: "Connection refused"</strong>
+- Ensure LM Studio server is running
+- Check the port number (default: 1234)
+- Verify firewall settings</p>
+<p><strong>Error: "Model not found"</strong>
+- Check the exact model name in LM Studio
+- Ensure the model is fully loaded
+- Try restarting the LM Studio server</p>
+<h2 id="security-best-practices">Security Best Practices</h2>
+<h3 id="api-key-security">API Key Security</h3>
+<ol>
+<li><strong>Never commit keys to version control</strong></li>
+<li><strong>Use environment variables</strong></li>
+<li><strong>Rotate keys regularly</strong></li>
+<li><strong>Use different keys for different environments</strong></li>
+<li><strong>Monitor usage and set alerts</strong></li>
+</ol>
+<h3 id="example-secure-setup">Example Secure Setup</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># .env file (never commit this)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>sk-your-secret-key-here
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">ANTHROPIC_API_KEY</span><span class="o">=</span>sk-ant-your-secret-key-here
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># .env.example file (commit this)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>your_openai_api_key_here
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nv">ANTHROPIC_API_KEY</span><span class="o">=</span>your_anthropic_api_key_here
+</code></pre></div>
+<h2 id="cost-optimization-tips">Cost Optimization Tips</h2>
+<h3 id="openai-optimization">OpenAI Optimization</h3>
+<ul>
+<li>Use GPT-3.5-turbo for most documents (cheaper)</li>
+<li>Use GPT-4 only for complex documents</li>
+<li>Set usage limits to control costs</li>
+<li>Monitor usage in the OpenAI dashboard</li>
+</ul>
+<h3 id="anthropic-optimization">Anthropic Optimization</h3>
+<ul>
+<li>Use Claude 3 Haiku for simple documents</li>
+<li>Use Claude 3 Sonnet for complex analysis</li>
+<li>Set usage limits to control costs</li>
+<li>Monitor usage in the Anthropic console</li>
+</ul>
+<h3 id="lm-studio-optimization">LM Studio Optimization</h3>
+<ul>
+<li>Use smaller models for faster processing</li>
+<li>Close other applications to free up RAM</li>
+<li>Use GPU acceleration if available</li>
+<li>Consider model quantization for memory efficiency</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<p>After setting up your AI provider:</p>
+<ol>
+<li><strong>Test with sample documents</strong>: Use the test PDFs in <code>input_pdfs/</code></li>
+<li><strong>Configure organization patterns</strong>: Customize folder structures</li>
+<li><strong>Set up monitoring</strong>: Monitor costs and usage</li>
+<li><strong>Optimize settings</strong>: Adjust confidence thresholds and batch sizes</li>
+</ol>
+<h2 id="support">Support</h2>
+<ul>
+<li><strong>OpenAI Support</strong>: <a href="https://help.openai.com">https://help.openai.com</a></li>
+<li><strong>Anthropic Support</strong>: <a href="https://support.anthropic.com">https://support.anthropic.com</a></li>
+<li><strong>LM Studio Support</strong>: <a href="https://lmstudio.ai/docs">https://lmstudio.ai/docs</a></li>
+<li><strong>Project Issues</strong>: <a href="https://github.com/yourusername/OCRganizer/issues">GitHub Issues</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
