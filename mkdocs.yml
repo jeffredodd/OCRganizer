@@ -1,8 +1,10 @@
 site_name: OCRganizer
 site_description: AI-powered PDF document organization and categorization system
-site_url: https://yourusername.github.io/OCRganizer
-repo_url: https://github.com/yourusername/OCRganizer
-repo_name: yourusername/OCRganizer
+site_url: https://jeffredodd.github.io/OCRganizer
+repo_url: https://github.com/jeffredodd/OCRganizer
+repo_name: jeffredodd/OCRganizer
+
+docs_dir: docs
 
 theme:
   name: material
@@ -32,32 +34,33 @@ markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
   - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.mermaid2
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
   - tables
 
 nav:
   - Home: index.md
   - Getting Started:
-    - Quick Start: docs/quick-start.md
-    - Installation: docs/installation.md
-    - User Guide: docs/user-guide.md
-    - CLI Usage: docs/cli-usage.md
+    - Quick Start: quick-start.md
+    - Installation: installation.md
+    - User Guide: user-guide.md
+    - CLI Usage: cli-usage.md
   - AI Providers:
-    - AI Provider Setup: docs/ai-provider-setup.md
-    - Configuration Reference: docs/configuration.md
-    - LM Studio Setup: docs/lm-studio-setup.md
+    - AI Provider Setup: ai-provider-setup.md
+    - Configuration Reference: configuration.md
+    - LM Studio Setup: lm-studio-setup.md
   - Development:
-    - Developer Guide: docs/developer-guide.md
-    - API Reference: docs/api.md
-    - Improvements: docs/improvements.md
+    - Developer Guide: developer-guide.md
+    - API Reference: api.md
   - Support:
-    - Troubleshooting: docs/troubleshooting.md
+    - Troubleshooting: troubleshooting.md
 
 plugins:
   - search
